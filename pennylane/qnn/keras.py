@@ -439,7 +439,9 @@ class KerasLayer(Layer):
         if isinstance(res, (list, tuple)):
             if len(x.shape) > 1:
                 # multi-return and batch dim case
-                res = [tf.reshape(r, (tf.shape(x)[0], tf.reduce_prod(r.shape[1:]))) for r in res]
+                #res = [tf.reshape(r, (tf.shape(x)[0], tf.reduce_prod(r.shape[1:]))) for r in res]
+                # exception multi-return and no batch dim
+                pass
 
             # multi-return and no batch dim
             return tf.experimental.numpy.hstack(res)
